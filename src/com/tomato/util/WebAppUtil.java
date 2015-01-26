@@ -1,11 +1,7 @@
 package com.tomato.util;
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * 
