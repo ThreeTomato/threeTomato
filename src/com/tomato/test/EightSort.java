@@ -165,7 +165,7 @@ public class EightSort {
      * @param i
      * @param j
      * @return void
-     * @Author: 李文品
+     * @Author: IT_黄鹂
      * @create Date: Jan 27, 2015 10:50:56 AM
      */
     private static void swap(int[] arry, int i, int j) {
@@ -180,7 +180,7 @@ public class EightSort {
      * @param arry
      * @param lastIndex
      * @return void
-     * @Author: 李文品
+     * @Author: IT_黄鹂
      * @create Date: Jan 27, 2015 10:51:18 AM
      */
     private static void buildMaxHeap(int[] arry, int lastIndex) {
