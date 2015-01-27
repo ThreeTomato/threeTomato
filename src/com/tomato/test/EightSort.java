@@ -4,53 +4,53 @@ import java.util.ArrayList;
 import java.util.List;
 
 /*
- * java ³ÌÐòÔ±±ØÐëÊìÁ·µÄ°ËÖÖÅÅÐòËã·¨£º
- * ÄÚ²¿ÅÅÐò£¨Ö»Ê¹ÓÃÄÚ´æ£©£º1.²åÈëÅÅÐò£º¢ÙÖ±½Ó²åÈëÅÅÐò  ¢ÚÏ£¶ûÅÅÐò
- * 	2.Ñ¡ÔñÅÅÐò£º¢Ù¼òµ¥Ñ¡ÔñÅÅÐò    ¢ÚÍÆÅÅÐò
- * 	3.½»»»ÅÅÐò£º¢ÙÃ°ÅÝÅÅÐò  ¢Ú¿ìËÙÅÅÐò
- * 	4.¹é²¢ÅÅÐò
- * 	5.»ùÊýÅÅÐò
- * Íâ²¿ÅÅÐò£¨ÄÚ´æºÍÍâ´æ½áºÏÊ¹ÓÃ£©£º
+ * java ç¨‹åºå‘˜å¿…é¡»ç†Ÿç»ƒçš„å…«ç§æŽ’åºç®—æ³•ï¼š
+ * å†…éƒ¨æŽ’åºï¼ˆåªä½¿ç”¨å†…å­˜ï¼‰ï¼š1.æ’å…¥æŽ’åºï¼šâ‘ ç›´æŽ¥æ’å…¥æŽ’åº  â‘¡å¸Œå°”æŽ’åº
+ * 	2.é€‰æ‹©æŽ’åºï¼šâ‘ ç®€å•é€‰æ‹©æŽ’åº    â‘¡æŽ¨æŽ’åº
+ * 	3.äº¤æ¢æŽ’åºï¼šâ‘ å†’æ³¡æŽ’åº  â‘¡å¿«é€ŸæŽ’åº
+ * 	4.å½’å¹¶æŽ’åº
+ * 	5.åŸºæ•°æŽ’åº
+ * å¤–éƒ¨æŽ’åºï¼ˆå†…å­˜å’Œå¤–å­˜ç»“åˆä½¿ç”¨ï¼‰ï¼š
  * 
 */
 public class EightSort {
 
     public static void main(String[] args) {
 	int[] arry = {12,2,12,33,21,344,11,333,55,61,46,18,3,1,9,2344};
-	//²âÊÔÖ±½Ó²åÈëÅÅÐò
+	//æµ‹è¯•ç›´æŽ¥æ’å…¥æŽ’åº
 	insertSort(arry);
 	System.out.println();
-	//²âÊÔÏ£¶ûÅÅÐò
+	//æµ‹è¯•å¸Œå°”æŽ’åº
 	shellSort(arry);
 	System.out.println();
-	//²âÊÔ¼òµ¥Ñ¡ÔñÅÅÐò
+	//æµ‹è¯•ç®€å•é€‰æ‹©æŽ’åº
 	selectSort(arry);
 	System.out.println();
-	//²âÊÔÃ°ÅÝÅÅÐò
+	//æµ‹è¯•å†’æ³¡æŽ’åº
 	bubbleSort(arry);
 	System.out.println();
-	//²âÊÔ»ùÊýÅÅÐò
+	//æµ‹è¯•åŸºæ•°æŽ’åº
 	radixSort(arry);
-	//²âÊÔ¿ìËÙÅÅÐò
+	//æµ‹è¯•å¿«é€ŸæŽ’åº
 	quickSort(arry, 0, arry.length-1);
-	//²âÊÔ¹é²¢ÅÅÐò
+	//æµ‹è¯•å½’å¹¶æŽ’åº
 	_sort(arry, 0, arry.length-1);
-	//²âÊÔ¶ÑÅÅÐò
+	//æµ‹è¯•å †æŽ’åº
 	heapSort(arry);
-	//´òÓ¡Êý×é
+	//æ‰“å°æ•°ç»„
 	for(int i:arry)System.out.print(i+",");
 
     }
     
     /**
-     * ·½·¨Ãû£º insertSort
-     * ·½·¨ÃèÊö£º²åÈëÅÅÐòÖÐµÄÖ±½Ó²åÈëÅÅÐò£º
-     *	»ù±¾Ë¼Ïë£º
-     *		ÔÚÒªÅÅÐòµÄÒ»×éÊýÖÐ£¬¼ÙÉèÇ°ÃæµÄ£¨n-1£©[n>=2]ÒÑ¾­ÊÇÅÅºÃË³ÐòµÄ£¬ÏÖÔÚÊÇÒª°ÑµÚn¸öÊý×Ö
-     *		²åµ½Ç°ÃæÓÐÐòµÄÊýÖÐ£¬Ê¹µÃÕân¸öÊýÒ²ÊÇÅÅºÃÐòµÄ¡£Èç´Ë·´¸´Ö±µ½ÅÅºÃËùÓÐµÄË³Ðò¡£
+     * æ–¹æ³•åï¼š insertSort
+     * æ–¹æ³•æè¿°ï¼šæ’å…¥æŽ’åºä¸­çš„ç›´æŽ¥æ’å…¥æŽ’åºï¼š
+     *	åŸºæœ¬æ€æƒ³ï¼š
+     *		åœ¨è¦æŽ’åºçš„ä¸€ç»„æ•°ä¸­ï¼Œå‡è®¾å‰é¢çš„ï¼ˆn-1ï¼‰[n>=2]å·²ç»æ˜¯æŽ’å¥½é¡ºåºçš„ï¼ŒçŽ°åœ¨æ˜¯è¦æŠŠç¬¬nä¸ªæ•°å­—
+     *		æ’åˆ°å‰é¢æœ‰åºçš„æ•°ä¸­ï¼Œä½¿å¾—è¿™nä¸ªæ•°ä¹Ÿæ˜¯æŽ’å¥½åºçš„ã€‚å¦‚æ­¤åå¤ç›´åˆ°æŽ’å¥½æ‰€æœ‰çš„é¡ºåºã€‚
      * @param arry
      * @return void
-     * @Author: IT_»Æð¿
+     * @Author: IT_é»„é¹‚
      * @create Date: Jan 26, 2015 10:33:33 AM
      */
     private static void insertSort(int[] arry){
@@ -58,25 +58,25 @@ public class EightSort {
 	for(int i = 1;i <arry.length;i++){
 	    int j = i-1;
 	    temp = arry[i];
-	    for(;j>=0&&temp<arry[j];j--){//½«´óÓÚtempµÄÊýÕûÌåÏòºóÒÆÒ»¸öµ¥Î»
+	    for(;j>=0&&temp<arry[j];j--){//å°†å¤§äºŽtempçš„æ•°æ•´ä½“å‘åŽç§»ä¸€ä¸ªå•ä½
 		arry[j+1] = arry[j];
 	    }
 	    arry[j+1] = temp;
 	}
 	for(int i:arry){
-	    System.out.print(i+"¡¢");	    
+	    System.out.print(i+"ã€");	    
 	}
     }
     
     /**
-     * ·½·¨Ãû£º shellSort
-     * ·½·¨ÃèÊö£ºÏ£¶ûÅÅÐò£¨×îÐ¡ÔöÁ¿ÅÅÐò£©£º²åÈëÅÅÐòµÄÒ»ÖÖ</p>
-     * 	»ù±¾Ë¼Ïë£º¸ÃËã·¨ÊÇÏÈ½«ÐèÒªÅÅÐòµÄËã·¨°´ÕÕÄ³¸öÔöÁ¿d£¨n/2£¬nÎªÒªÅÅÐòµÄ¸öÊý£©·Ö³ÉÈô¸É×é£¬Ã¿Ò»×éµÄ¼ÇÂ¼ÏÂ±êÏà²îd£¬</p>
-     * 		¶ÔÃ¿Ò»×éµÄÈ«²¿ÔªËØ½øÐÐÖ±½Ó²åÈëÅÅÐò£¬È»ºóÔÙÓÃ½ÏÐ¡µÄÔöÁ¿£¨d/2£©½øÐÐ·Ö×é£¬ÔÙÔÚÃ¿¸öÐ¡×éÖÐ?øÐÐÖ±½Ó²åÈ?/p>
-     * 		ÅÅÐò£¬µ±×îÐ¡ÔöÁ¿Îª1Ê±£¬½øÐÐÖ±½ÓÅÅÍêÐòºó£¬Õû¸öÅÅÐò¾ÍÍê³ÉÁË¡£</p>
+     * æ–¹æ³•åï¼š shellSort
+     * æ–¹æ³•æè¿°ï¼šå¸Œå°”æŽ’åºï¼ˆæœ€å°å¢žé‡æŽ’åºï¼‰ï¼šæ’å…¥æŽ’åºçš„ä¸€ç§</p>
+     * 	åŸºæœ¬æ€æƒ³ï¼šè¯¥ç®—æ³•æ˜¯å…ˆå°†éœ€è¦æŽ’åºçš„ç®—æ³•æŒ‰ç…§æŸä¸ªå¢žé‡dï¼ˆn/2ï¼Œnä¸ºè¦æŽ’åºçš„ä¸ªæ•°ï¼‰åˆ†æˆè‹¥å¹²ç»„ï¼Œæ¯ä¸€ç»„çš„è®°å½•ä¸‹æ ‡ç›¸å·®dï¼Œ</p>
+     * 		å¯¹æ¯ä¸€ç»„çš„å…¨éƒ¨å…ƒç´ è¿›è¡Œç›´æŽ¥æ’å…¥æŽ’åºï¼Œç„¶åŽå†ç”¨è¾ƒå°çš„å¢žé‡ï¼ˆd/2ï¼‰è¿›è¡Œåˆ†ç»„ï¼Œå†åœ¨æ¯ä¸ªå°ç»„ä¸­ï¿½î‰£å…„è‹¯ç¡¬è¿¦ï¿½/p>
+     * 		æŽ’åºï¼Œå½“æœ€å°å¢žé‡ä¸º1æ—¶ï¼Œè¿›è¡Œç›´æŽ¥æŽ’å®ŒåºåŽï¼Œæ•´ä¸ªæŽ’åºå°±å®Œæˆäº†ã€‚</p>
      * @param arry
      * @return void
-     * @Author: IT_»Æð¿
+     * @Author: IT_é»„é¹‚
      * @create Date: Jan 26, 2015 1:27:49 PM
      */
     private static void shellSort(int[] arry){
@@ -85,9 +85,9 @@ public class EightSort {
 	while(true){
 	    d1 = Math.ceil(d1/2);
 	    int d = (int) d1;
-	    //½«ÐèÒªÅÅÐòµÄÊý×é°´ÕÕÔöÁ¿d·Ö×é
+	    //å°†éœ€è¦æŽ’åºçš„æ•°ç»„æŒ‰ç…§å¢žé‡dåˆ†ç»„
 	    for(int i = 0;i < d;i++){
-		//start½ÓÏÂÀ´¾ÍÊÇÒ»¸öÖ±½Ó²åÈëÅÅÐò
+		//startæŽ¥ä¸‹æ¥å°±æ˜¯ä¸€ä¸ªç›´æŽ¥æ’å…¥æŽ’åº
 		for(int z = i+d;z <arry.length;z+=d){
 		    int j = z - d;
 		    temp = arry[z];
@@ -96,76 +96,76 @@ public class EightSort {
 		    }
 		    arry[j+d] = temp;
 		}
-		//endÖ±½Ó²åÈëÅÅÐòÍê³É
+		//endç›´æŽ¥æ’å…¥æŽ’åºå®Œæˆ
 	    }
 	    if(d==1) break;
 	}
 	for(int i:arry){
-	    System.out.print(i+"¡¢");	    
+	    System.out.print(i+"ã€");	    
 	}
     }
     
     /**
-     * ·½·¨Ãû£º selectSort
-     * ·½·¨ÃèÊö£º¼òµ¥Ñ¡ÔñÅÅÐò£ºÊÇÑ¡ÔñÅÅÐòµÄÒ»ÖÖ¡£</p>
-     * 	»ù±¾Ë¼Ïë£º¾ÍÊÇÔÚÐèÒªÅÅÐòµÄÊý×ÖÖÐÑ¡Ôñ³ö×îÐ¡µÄÄÇ¸ö£¬È»ºóºÍµÚÒ»¸öÎ»ÖÃµÄÊý½øÐÐµ÷»»Î»ÖÃ£¬</p>
-     * 		È»ºóÔÙÊ£ÏÂµÄÖÐÑ¡Ôñ×îÏÂµÄÊý×Ö£¬È»ºóÔÙÓëµÚ¶þ¸öÊý×Ö½øÐÐÎ»ÖÃµ÷»»¡£Èç´ËÑ­»·</p>
-     * 		Ö±µ½µ¹ÊýµÚ¶þ¸öÊý×ÖÓëµ¹ÊýµÚÒ»¸öÊý×Öµ÷»»Î»ÖÃÎªÖ¹¡£</p>
+     * æ–¹æ³•åï¼š selectSort
+     * æ–¹æ³•æè¿°ï¼šç®€å•é€‰æ‹©æŽ’åºï¼šæ˜¯é€‰æ‹©æŽ’åºçš„ä¸€ç§ã€‚</p>
+     * 	åŸºæœ¬æ€æƒ³ï¼šå°±æ˜¯åœ¨éœ€è¦æŽ’åºçš„æ•°å­—ä¸­é€‰æ‹©å‡ºæœ€å°çš„é‚£ä¸ªï¼Œç„¶åŽå’Œç¬¬ä¸€ä¸ªä½ç½®çš„æ•°è¿›è¡Œè°ƒæ¢ä½ç½®ï¼Œ</p>
+     * 		ç„¶åŽå†å‰©ä¸‹çš„ä¸­é€‰æ‹©æœ€ä¸‹çš„æ•°å­—ï¼Œç„¶åŽå†ä¸Žç¬¬äºŒä¸ªæ•°å­—è¿›è¡Œä½ç½®è°ƒæ¢ã€‚å¦‚æ­¤å¾ªçŽ¯</p>
+     * 		ç›´åˆ°å€’æ•°ç¬¬äºŒä¸ªæ•°å­—ä¸Žå€’æ•°ç¬¬ä¸€ä¸ªæ•°å­—è°ƒæ¢ä½ç½®ä¸ºæ­¢ã€‚</p>
      * @param arry
      * @return void
-     * @Author: IT_»Æð¿
+     * @Author: IT_é»„é¹‚
      * @create Date: Jan 26, 2015 2:38:14 PM
      */
     private static void selectSort(int[] arry){
-	int pos = 0;//ÓÃÀ´¼ÇÂ¼×îÐ¡ÊýµÄÎ»ÖÃµÄ
+	int pos = 0;//ç”¨æ¥è®°å½•æœ€å°æ•°çš„ä½ç½®çš„
 	for(int i = 0;i < arry.length;i++){
 	  int j = i+1;
 	  pos = i;
 	  int temp = arry[i];
-	  //ÔÚÊ£ÏÂµÄÊý×ÖÖÐÕÒ³ö×îÐ¡µÄÊý×Ö
+	  //åœ¨å‰©ä¸‹çš„æ•°å­—ä¸­æ‰¾å‡ºæœ€å°çš„æ•°å­—
 	  for(;j<arry.length;j++){
 	      if(arry[j] < temp){
 		  temp = arry[j];
 		  pos = j;
 	      }
 	  }
-	  //ÕÒ³öµÄ×îÐ¡Êý×ÖÓëµÚi¸öÎ»ÖÃµ÷»»
+	  //æ‰¾å‡ºçš„æœ€å°æ•°å­—ä¸Žç¬¬iä¸ªä½ç½®è°ƒæ¢
 	  arry[pos] = arry[i];
 	  arry[i] = temp;
 	}
-	//´òÓ¡ÅÅºÃÐòµÄÊý×é
+	//æ‰“å°æŽ’å¥½åºçš„æ•°ç»„
 	for(int i:arry){
-	    System.out.print(i+"¡¢");	    
+	    System.out.print(i+"ã€");	    
 	}	
     }
     /**
-     * ·½·¨Ãû£º heapSort
-     * ·½·¨ÃèÊö£ºÍÆÅÅÐò£ºÊÇÒ»ÖÖÊ÷ÐÎÑ¡ÔñÅÅÐòµÄÒ»ÖÖ£¬Ò²ÊÇ¶ÔÖ±½ÓÑ¡ÔñÅÅÐòµÄÒ»ÖÖ¸Ä½ø¡£</p>
-     * 	»ù±¾Ë¼Ïë£º
+     * æ–¹æ³•åï¼š heapSort
+     * æ–¹æ³•æè¿°ï¼šæŽ¨æŽ’åºï¼šæ˜¯ä¸€ç§æ ‘å½¢é€‰æ‹©æŽ’åºçš„ä¸€ç§ï¼Œä¹Ÿæ˜¯å¯¹ç›´æŽ¥é€‰æ‹©æŽ’åºçš„ä¸€ç§æ”¹è¿›ã€‚</p>
+     * 	åŸºæœ¬æ€æƒ³ï¼š
      * @param arry
      * @return void
-     * @Author: IT_»Æð¿
+     * @Author: IT_é»„é¹‚
      * @create Date: Jan 26, 2015 3:03:49 PM
      */
     private static void heapSort(int[] arry){
 	int arrayLength = arry.length;
-	// Ñ­»·½¨¶Ñ
+	// å¾ªçŽ¯å»ºå †
 	for (int i = 0; i < arrayLength - 1; i++) {
-	    // ½¨¶Ñ
+	    // å»ºå †
 	    buildMaxHeap(arry, arrayLength - 1 - i);
-	    // ½»»»¶Ñ¶¥ºÍ×îºóÒ»¸öÔªËØ
+	    // äº¤æ¢å †é¡¶å’Œæœ€åŽä¸€ä¸ªå…ƒç´ 
 	    swap(arry, 0, arrayLength - 1 - i);
 	}
     }
     
     /**
-     * ·½·¨Ãû£º swap
-     * ·½·¨ÃèÊö£º½»»»£¬´Ó¶ÑÖÐÌß³ö×î´óÊý£º
+     * æ–¹æ³•åï¼š swap
+     * æ–¹æ³•æè¿°ï¼šäº¤æ¢ï¼Œä»Žå †ä¸­è¸¢å‡ºæœ€å¤§æ•°ï¼š
      * @param arry
      * @param i
      * @param j
      * @return void
-     * @Author: IT_»Æð¿
+     * @Author: IT_é»„é¹‚
      * @create Date: Jan 27, 2015 10:50:56 AM
      */
     private static void swap(int[] arry, int i, int j) {
@@ -175,37 +175,37 @@ public class EightSort {
     }
 
     /**
-     * ·½·¨Ãû£º buildMaxHeap
-     * ·½·¨ÃèÊö£º¶ÔarryÊý×é´Ó0µ½lastIndex½¨´ó¶¥¶Ñ
+     * æ–¹æ³•åï¼š buildMaxHeap
+     * æ–¹æ³•æè¿°ï¼šå¯¹arryæ•°ç»„ä»Ž0åˆ°lastIndexå»ºå¤§é¡¶å †
      * @param arry
      * @param lastIndex
      * @return void
-     * @Author: IT_»Æð¿
+     * @Author: IT_é»„é¹‚
      * @create Date: Jan 27, 2015 10:51:18 AM
      */
     private static void buildMaxHeap(int[] arry, int lastIndex) {
 	// TODO Auto-generated method stub
-	// ´ÓlastIndex´¦½Úµã£¨×îºóÒ»¸ö½Úµã£©µÄ¸¸½Úµã¿ªÊ¼
+	// ä»ŽlastIndexå¤„èŠ‚ç‚¹ï¼ˆæœ€åŽä¸€ä¸ªèŠ‚ç‚¹ï¼‰çš„çˆ¶èŠ‚ç‚¹å¼€å§‹
 	for (int i = (lastIndex - 1) / 2; i >= 0; i--) {
-	    // k±£´æÕýÔÚÅÐ¶ÏµÄ½Úµã
+	    // kä¿å­˜æ­£åœ¨åˆ¤æ–­çš„èŠ‚ç‚¹
 	    int k = i;
-	    // Èç¹ûµ±Ç°k½ÚµãµÄ×Ó½Úµã´æÔÚ
+	    // å¦‚æžœå½“å‰kèŠ‚ç‚¹çš„å­èŠ‚ç‚¹å­˜åœ¨
 	    while (k * 2 + 1 <= lastIndex) {
-		// k½ÚµãµÄ×ó×Ó½ÚµãµÄË÷Òý
+		// kèŠ‚ç‚¹çš„å·¦å­èŠ‚ç‚¹çš„ç´¢å¼•
 		int biggerIndex = 2 * k + 1;
-		// Èç¹ûbiggerIndexÐ¡ÓÚlastIndex£¬¼´biggerIndex+1´ú±íµÄk½ÚµãµÄÓÒ×Ó½Úµã´æÔÚ
+		// å¦‚æžœbiggerIndexå°äºŽlastIndexï¼Œå³biggerIndex+1ä»£è¡¨çš„kèŠ‚ç‚¹çš„å³å­èŠ‚ç‚¹å­˜åœ¨
 		if (biggerIndex < lastIndex) {
-		    // Èô¹ûÓÒ×Ó½ÚµãµÄÖµ½Ï´ó
+		    // è‹¥æžœå³å­èŠ‚ç‚¹çš„å€¼è¾ƒå¤§
 		    if (arry[biggerIndex] < arry[biggerIndex + 1]) {
-			// biggerIndex×ÜÊÇ¼ÇÂ¼½Ï´ó×Ó½ÚµãµÄË÷Òý
+			// biggerIndexæ€»æ˜¯è®°å½•è¾ƒå¤§å­èŠ‚ç‚¹çš„ç´¢å¼•
 			biggerIndex++;
 		    }
 		}
-		// Èç¹ûk½ÚµãµÄÖµÐ¡ÓÚÆä½Ï´óµÄ×Ó½ÚµãµÄÖµ
+		// å¦‚æžœkèŠ‚ç‚¹çš„å€¼å°äºŽå…¶è¾ƒå¤§çš„å­èŠ‚ç‚¹çš„å€¼
 		if (arry[k] < arry[biggerIndex]) {
-		    // ½»»»ËûÃÇ
+		    // äº¤æ¢ä»–ä»¬
 		    swap(arry, k, biggerIndex);
-		    // ½«biggerIndex¸³Óèk£¬¿ªÊ¼whileÑ­»·µÄÏÂÒ»´ÎÑ­»·£¬ÖØÐÂ±£Ö¤k½ÚµãµÄÖµ´óÓÚÆä×óÓÒ×Ó½ÚµãµÄÖµ
+		    // å°†biggerIndexèµ‹äºˆkï¼Œå¼€å§‹whileå¾ªçŽ¯çš„ä¸‹ä¸€æ¬¡å¾ªçŽ¯ï¼Œé‡æ–°ä¿è¯kèŠ‚ç‚¹çš„å€¼å¤§äºŽå…¶å·¦å³å­èŠ‚ç‚¹çš„å€¼
 		    k = biggerIndex;
 		} else {
 		    break;
@@ -216,13 +216,13 @@ public class EightSort {
 
     
     /**
-     * ·½·¨Ãû£º bubbleSort
-     * ·½·¨ÃèÊö£ºÃ°ÅÝÅÅÐò£º</p>
-     * 	»ù±¾Ë¼Ïë£ºÔÚÒªÅÅÐòµÄÒ»×éÊýÖÐ£¬¶Ôµ±Ç°»¹Î´ÅÅºÃÐòµÄ·¶Î§ÄÚµÄÈ«²¿Êý£¬×ÔÉÏ¶øÏÂ¶ÔÏàÁÚµÄÁ½¸öÊýÒÀ´Î½øÐÐ±È½ÏºÍµ÷Õû£¬</p>
-     * 		ÈÃ½Ï´óµÄÊýÍùÏÂ³Á£¬½ÏÐ¡µÄ?ùÉÏÃ°¡£¼´£ºÃ¿µ±Á½ÏàÁÚµÄÊý±È½Ïºó·¢ÏÖËüÃÇµÄÅÅÐòÓëÅÅÐòÒªÇóÏà·´Ê±£¬¾Í½«ËüÃÇ»¥»»¡?/p>
+     * æ–¹æ³•åï¼š bubbleSort
+     * æ–¹æ³•æè¿°ï¼šå†’æ³¡æŽ’åºï¼š</p>
+     * 	åŸºæœ¬æ€æƒ³ï¼šåœ¨è¦æŽ’åºçš„ä¸€ç»„æ•°ä¸­ï¼Œå¯¹å½“å‰è¿˜æœªæŽ’å¥½åºçš„èŒƒå›´å†…çš„å…¨éƒ¨æ•°ï¼Œè‡ªä¸Šè€Œä¸‹å¯¹ç›¸é‚»çš„ä¸¤ä¸ªæ•°ä¾æ¬¡è¿›è¡Œæ¯”è¾ƒå’Œè°ƒæ•´ï¼Œ</p>
+     * 		è®©è¾ƒå¤§çš„æ•°å¾€ä¸‹æ²‰ï¼Œè¾ƒå°çš„ï¿½îŠºåŽ¦å•Šï¼œçŸ—å¥½åº·ç»·è¾ƒå—”è¯˜æ°–îšå†‰è™¾è “â‘¾ç‚™îŽå ‘å‘åˆ¤è›´è‚±åˆ¤è›žî€¦ç¬™å–¾è¯ä¿îƒ™å¾’î‚ˆîŽè…”ã‚»å¼§ï¿½/p>
      * @param arry
      * @return void
-     * @Author: IT_»Æð¿
+     * @Author: IT_é»„é¹‚
      * @create Date: Jan 26, 2015 4:08:08 PM
      */
     private static void bubbleSort(int[] arry){
@@ -236,134 +236,134 @@ public class EightSort {
 		}
 	    }
 	}
-	//´òÓ¡ÅÅºÃÐòµÄÊý×é
+	//æ‰“å°æŽ’å¥½åºçš„æ•°ç»„
 	for (int i : arry) {
-	    System.out.print(i + "¡¢");
+	    System.out.print(i + "ã€");
 	}
     }
     
     /**
-     * ·½·¨Ãû£º quickSort
-     * ·½·¨ÃèÊö£º¿ìËÙÅÅÐò£º</br>
-     * 	»ù±¾Ë¼Ïë£ºÑ¡ÔñÒ»¸ö»ù×¼ÔªËØ,Í¨³£Ñ¡ÔñµÚÒ»¸öÔªËØ»òÕß×îºóÒ»¸öÔªËØ,Í¨¹ýÒ»ÌËÉ¨Ãè£¬½«´ýÅÅÐòÁÐ·Ö³ÉÁ½²¿·Ö,</br>
-     * 		Ò»²¿·Ö±È»ù×¼ÔªËØÐ¡,Ò»²¿·Ö´óÓÚµÈÓÚ»ù×¼ÔªËØ,´ËÊ±»ù×¼ÔªËØÔÚÆäÅÅºÃÐòºóµÄÕýÈ·Î»ÖÃ,È»ºóÔÙÓÃ</br>
-     * 		Í¬ÑùµÄ·½·¨µÝ¹éµØÅÅÐò»®·ÖµÄÁ½²¿·Ö¡£
+     * æ–¹æ³•åï¼š quickSort
+     * æ–¹æ³•æè¿°ï¼šå¿«é€ŸæŽ’åºï¼š</br>
+     * 	åŸºæœ¬æ€æƒ³ï¼šé€‰æ‹©ä¸€ä¸ªåŸºå‡†å…ƒç´ ,é€šå¸¸é€‰æ‹©ç¬¬ä¸€ä¸ªå…ƒç´ æˆ–è€…æœ€åŽä¸€ä¸ªå…ƒç´ ,é€šè¿‡ä¸€è¶Ÿæ‰«æï¼Œå°†å¾…æŽ’åºåˆ—åˆ†æˆä¸¤éƒ¨åˆ†,</br>
+     * 		ä¸€éƒ¨åˆ†æ¯”åŸºå‡†å…ƒç´ å°,ä¸€éƒ¨åˆ†å¤§äºŽç­‰äºŽåŸºå‡†å…ƒç´ ,æ­¤æ—¶åŸºå‡†å…ƒç´ åœ¨å…¶æŽ’å¥½åºåŽçš„æ­£ç¡®ä½ç½®,ç„¶åŽå†ç”¨</br>
+     * 		åŒæ ·çš„æ–¹æ³•é€’å½’åœ°æŽ’åºåˆ’åˆ†çš„ä¸¤éƒ¨åˆ†ã€‚
      * @param arry
-     * @param low ²»Îª¿ÕµÄÊý×é×îÐ¡µÄÏÂ±ê(0)
-     * @param high Êý×é³¤¶È
+     * @param low ä¸ä¸ºç©ºçš„æ•°ç»„æœ€å°çš„ä¸‹æ ‡(0)
+     * @param high æ•°ç»„é•¿åº¦
      * @return void
-     * @Author: IT_»Æð¿
+     * @Author: IT_é»„é¹‚
      * @create Date: Jan 26, 2015 4:41:23 PM
      */
     private static void quickSort(int[] arry,int low,int high){
-	//arryÊý×é±ØÐë²»Îª¿Õ£¬¿ÉÒÔ½øÐÐ²»Îª¿ÕÅÐ¶Ï
+	//arryæ•°ç»„å¿…é¡»ä¸ä¸ºç©ºï¼Œå¯ä»¥è¿›è¡Œä¸ä¸ºç©ºåˆ¤æ–­
 	if(low < high){
-	    int middle = getMiddle(arry, low, high);//½«Êý×éÒ»·ÖÎª¶þ
-	    quickSort(arry, low, middle-1);//¶ÔµÍ×Ö±í½øÐÐÅÅÐò
-	    quickSort(arry, middle+1, high);//¶Ô¸ß×Ö±í½øÐÐÅÅÐò
+	    int middle = getMiddle(arry, low, high);//å°†æ•°ç»„ä¸€åˆ†ä¸ºäºŒ
+	    quickSort(arry, low, middle-1);//å¯¹ä½Žå­—è¡¨è¿›è¡ŒæŽ’åº
+	    quickSort(arry, middle+1, high);//å¯¹é«˜å­—è¡¨è¿›è¡ŒæŽ’åº
 	}
     }
     
     /**
-     * ·½·¨Ãû£º getMiddle
-     * ·½·¨ÃèÊö£ºÓÃÓÚ¿ìËÙÅÅÐòµÄµÝ¹éËã·¨
+     * æ–¹æ³•åï¼š getMiddle
+     * æ–¹æ³•æè¿°ï¼šç”¨äºŽå¿«é€ŸæŽ’åºçš„é€’å½’ç®—æ³•
      * @param arry
      * @param low
      * @param high
      * @return int
-     * @Author: IT_»Æð¿
+     * @Author: IT_é»„é¹‚
      * @create Date: Jan 27, 2015 9:15:41 AM
      */
     private static int getMiddle(int[] arry,int low,int high){
-	int temp = arry[low];//Ò»Êý×éµÄµÚÒ»¸öÊýÎªÖÐÖá
+	int temp = arry[low];//ä¸€æ•°ç»„çš„ç¬¬ä¸€ä¸ªæ•°ä¸ºä¸­è½´
 	while(low < high){
 	  while(low < high&&arry[high]>=temp)high--;
-	  arry[low] = arry[high];//½«±ÈÖÐÖáÐ¡µÄÒÆµ½µÍ¶Ë
+	  arry[low] = arry[high];//å°†æ¯”ä¸­è½´å°çš„ç§»åˆ°ä½Žç«¯
 	  while(low < high&&arry[low] <=temp)low++;
-	  arry[high] = arry[low];//½«±ÈÖÐÖáµÄ´óµÄÒÆµ½¸ß¶Ë
+	  arry[high] = arry[low];//å°†æ¯”ä¸­è½´çš„å¤§çš„ç§»åˆ°é«˜ç«¯
 	}
-	arry[low] = temp;//½«ÖÐÖáÎ»ÖÃ±ê×¢
-	return low;//·µ»ØÖÐÖá
+	arry[low] = temp;//å°†ä¸­è½´ä½ç½®æ ‡æ³¨
+	return low;//è¿”å›žä¸­è½´
     }
     
     /**
-     * ·½·¨Ãû£º _sort
-     * ·½·¨ÃèÊö£º¹é²¢ÅÅÐò£º</br>
-     * 	»ù±¾Ë¼Ïë£º¹é²¢£¨Merge£©ÅÅÐò·¨ÊÇ½«Á½¸ö£¨»òÁ½¸öÒÔÉÏ£©ÓÐÐò±íºÏ²¢³ÉÒ»¸öÐÂµÄÓÐÐò±í£¬¼´°Ñ´ýÅÅÐòÐòÁÐ·ÖÎªÈô¸É</br>
-     * 		¸ö×ÓÐòÁÐ£¬Ã¿¸ö×ÓÐòÁÐÊÇÓÐÐòµÄ¡£È»ºóÔÙ°ÑÓÐÐò×ÓÐòÁÐºÏ²¢ÎªÕûÌåÓÐÐòÐòÁÐ¡£</br>
+     * æ–¹æ³•åï¼š _sort
+     * æ–¹æ³•æè¿°ï¼šå½’å¹¶æŽ’åºï¼š</br>
+     * 	åŸºæœ¬æ€æƒ³ï¼šå½’å¹¶ï¼ˆMergeï¼‰æŽ’åºæ³•æ˜¯å°†ä¸¤ä¸ªï¼ˆæˆ–ä¸¤ä¸ªä»¥ä¸Šï¼‰æœ‰åºè¡¨åˆå¹¶æˆä¸€ä¸ªæ–°çš„æœ‰åºè¡¨ï¼Œå³æŠŠå¾…æŽ’åºåºåˆ—åˆ†ä¸ºè‹¥å¹²</br>
+     * 		ä¸ªå­åºåˆ—ï¼Œæ¯ä¸ªå­åºåˆ—æ˜¯æœ‰åºçš„ã€‚ç„¶åŽå†æŠŠæœ‰åºå­åºåˆ—åˆå¹¶ä¸ºæ•´ä½“æœ‰åºåºåˆ—ã€‚</br>
      * @param arry
      * @param left
      * @param right
      * @return void
-     * @Author: IT_»Æð¿
+     * @Author: IT_é»„é¹‚
      * @create Date: Jan 27, 2015 9:43:23 AM
      */
     private static void _sort(int[] arry,int left,int right){
 	if (left < right) {
-	    // ÕÒ³öÖÐ¼äË÷Òý
+	    // æ‰¾å‡ºä¸­é—´ç´¢å¼•
 	    int center = (left + right) / 2;
-	    // ¶Ô×ó±ßÊý×é½øÐÐµÝ¹é
+	    // å¯¹å·¦è¾¹æ•°ç»„è¿›è¡Œé€’å½’
 	    _sort(arry, left, center);
-	    // ¶ÔÓÒ±ßÊý×é½øÐÐµÝ¹é
+	    // å¯¹å³è¾¹æ•°ç»„è¿›è¡Œé€’å½’
 	    _sort(arry, center + 1, right);
-	    // ºÏ²¢
+	    // åˆå¹¶
 	    merge(arry, left, center, right);
 
 	}
     }
     
     /**
-     * ·½·¨Ãû£º merge
-     * ·½·¨ÃèÊö£º¹é²¢ÅÅÐò
+     * æ–¹æ³•åï¼š merge
+     * æ–¹æ³•æè¿°ï¼šå½’å¹¶æŽ’åº
      * @param arry
      * @param left
      * @param center
      * @param right
      * @return void
-     * @Author: IT_»Æð¿
+     * @Author: IT_é»„é¹‚
      * @create Date: Jan 27, 2015 9:51:47 AM
      */
     private static void merge(int[] arry, int left, int center, int right) {
 	int[] tmpArr = new int[arry.length];
 	int mid = center + 1;
-	// third¼ÇÂ¼ÖÐ¼äÊý×éµÄË÷Òý
+	// thirdè®°å½•ä¸­é—´æ•°ç»„çš„ç´¢å¼•
 	int third = left;
 	int tmp = left;
 	while (left <= center && mid <= right) {
 
-	    // ´ÓÁ½¸öÊý×éÖÐÈ¡³ö×îÐ¡µÄ·ÅÈëÖÐ¼äÊý×é
+	    // ä»Žä¸¤ä¸ªæ•°ç»„ä¸­å–å‡ºæœ€å°çš„æ”¾å…¥ä¸­é—´æ•°ç»„
 	    if (arry[left] <= arry[mid]) {
 		tmpArr[third++] = arry[left++];
 	    } else {
 		tmpArr[third++] = arry[mid++];
 	    }
 	}
-	// Ê£Óà²¿·ÖÒÀ´Î·ÅÈëÖÐ¼äÊý×é
+	// å‰©ä½™éƒ¨åˆ†ä¾æ¬¡æ”¾å…¥ä¸­é—´æ•°ç»„
 	while (mid <= right) {
 	    tmpArr[third++] = arry[mid++];
 	}
 	while (left <= center) {
 	    tmpArr[third++] = arry[left++];
 	}
-	// ½«ÖÐ¼äÊý×éÖÐµÄÄÚÈÝ¸´ÖÆ»ØÔ­Êý×é
+	// å°†ä¸­é—´æ•°ç»„ä¸­çš„å†…å®¹å¤åˆ¶å›žåŽŸæ•°ç»„
 	while (tmp <= right) {
 	    arry[tmp] = tmpArr[tmp++];
 	}	
     }
     
     /**
-     * ·½·¨Ãû£º radixSort
-     * ·½·¨ÃèÊö£º»ùÊýÅÅÐò£º</br>
-     * 	»ù±¾Ë¼Ïë£º½«ËùÓÐ´ý±È½ÏÊýÖµ£¨ÕýÕûÊý£©Í³Ò»ÎªÍ¬ÑùµÄÊýÎ»³¤¶È£¬ÊýÎ»½Ï¶ÌµÄÊýÇ°Ãæ²¹Áã¡£È»ºó£¬´Ó×îµÍÎ»¿ªÊ¼£¬</br>
-     * 		ÒÀ´Î½øÐÐÒ»´ÎÅÅÐò¡£ÕâÑù´Ó×îµÍÎ»ÅÅÐòÒ»Ö±µ½×î¸ßÎ»ÅÅÐòÍê³ÉÒÔºó,ÊýÁÐ¾Í±ä³ÉÒ»¸öÓÐÐòÐòÁÐ¡£</br>
+     * æ–¹æ³•åï¼š radixSort
+     * æ–¹æ³•æè¿°ï¼šåŸºæ•°æŽ’åºï¼š</br>
+     * 	åŸºæœ¬æ€æƒ³ï¼šå°†æ‰€æœ‰å¾…æ¯”è¾ƒæ•°å€¼ï¼ˆæ­£æ•´æ•°ï¼‰ç»Ÿä¸€ä¸ºåŒæ ·çš„æ•°ä½é•¿åº¦ï¼Œæ•°ä½è¾ƒçŸ­çš„æ•°å‰é¢è¡¥é›¶ã€‚ç„¶åŽï¼Œä»Žæœ€ä½Žä½å¼€å§‹ï¼Œ</br>
+     * 		ä¾æ¬¡è¿›è¡Œä¸€æ¬¡æŽ’åºã€‚è¿™æ ·ä»Žæœ€ä½Žä½æŽ’åºä¸€ç›´åˆ°æœ€é«˜ä½æŽ’åºå®Œæˆä»¥åŽ,æ•°åˆ—å°±å˜æˆä¸€ä¸ªæœ‰åºåºåˆ—ã€‚</br>
      * @param arry
      * @return void
-     * @Author: IT_»Æð¿
+     * @Author: IT_é»„é¹‚
      * @create Date: Jan 27, 2015 9:55:47 AM
      */
     @SuppressWarnings({ "rawtypes", "unchecked" })
     private static void radixSort(int[] arry) {
-	// Ê×ÏÈÈ·¶¨ÅÅÐòµÄÌËÊý;
+	// é¦–å…ˆç¡®å®šæŽ’åºçš„è¶Ÿæ•°;
 	int max = arry[0];
 	for (int i = 1; i < arry.length; i++) {
 	    if (arry[i] > max) {
@@ -372,33 +372,33 @@ public class EightSort {
 	}
 
 	int time = 0;
-	// ÅÐ¶ÏÎ»Êý;
+	// åˆ¤æ–­ä½æ•°;
 	while (max > 0) {
 	    max /= 10;
 	    time++;
 	}
 
-	// ½¨Á¢10¸ö¶ÓÁÐ;
+	// å»ºç«‹10ä¸ªé˜Ÿåˆ—;
 	List<ArrayList> queue = new ArrayList<ArrayList>();
 	for (int i = 0; i < 10; i++) {
 	    ArrayList<Integer> queue1 = new ArrayList<Integer>();
 	    queue.add(queue1);
 	}
 
-	// ½øÐÐtime´Î·ÖÅäºÍÊÕ¼¯;
+	// è¿›è¡Œtimeæ¬¡åˆ†é…å’Œæ”¶é›†;
 	for (int i = 0; i < time; i++) {
 
-	    // ·ÖÅäÊý×éÔªËØ;
+	    // åˆ†é…æ•°ç»„å…ƒç´ ;
 	    for (int j = 0; j < arry.length; j++) {
-		// µÃµ½Êý×ÖµÄµÚtime+1Î»Êý;
+		// å¾—åˆ°æ•°å­—çš„ç¬¬time+1ä½æ•°;
 		int x = arry[j] % (int) Math.pow(10, i + 1)
 			/ (int) Math.pow(10, i);
 		ArrayList<Integer> queue2 = queue.get(x);
 		queue2.add(arry[j]);
 		queue.set(x, queue2);
 	    }
-	    int count = 0;// ÔªËØ¼ÆÊýÆ÷;
-	    // ÊÕ¼¯¶ÓÁÐÔªËØ;
+	    int count = 0;// å…ƒç´ è®¡æ•°å™¨;
+	    // æ”¶é›†é˜Ÿåˆ—å…ƒç´ ;
 	    for (int k = 0; k < 10; k++) {
 		while (queue.get(k).size() > 0) {
 		    ArrayList<Integer> queue3 = queue.get(k);
@@ -409,7 +409,7 @@ public class EightSort {
 	    }
 	}
 	
-	//´òÓ¡Êý×é
+	//æ‰“å°æ•°ç»„
 	for(int i:arry){
 	    System.out.print(i+",");
 	}
